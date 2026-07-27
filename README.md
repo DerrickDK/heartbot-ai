@@ -1,14 +1,40 @@
 # **Heart Disease Prediction and Support Chatbot**
-This project is decicated to MSAI-699 Capstone and aims to build an AI-powered heart disease prediction and patient support chatbot using Gradio, Hugging Face, and Groq. The goal is to provide a user friendly interface for users to input their data and recieve predictions about the presense of heart disease and a chatbot to offer patient support and guidance for wellness.
+This project is decicated to MSAI-699 Capstone and aims to build an AI-powered heart disease prediction and patient support chatbot using Gradio, Hugging Face, and Groq. The goal is to provide a user friendly interface for users to input their data, gain knowledge about their data, recieve predictions about the presense of heart disease, and interact with a chatbot, heartbot-ai, that offers patient support and guidance for wellness.
 
-
+# Structure
+```bash
+project/
+│
+├── models/
+│   └── heart_model.pkl      # Full pipeline model build
+│
+├── data/
+│   └── docs/                # PDFs, dataset descriptions
+├── dataset/
+│   └── models/                # PDFs, dataset descriptions
+│       ├── ...exploration.ipynb
+│       ├── ...model_training.ipynb
+│       └── ...optimization.ipynb
+│
+├── src/
+│   ├── config.py            # API keys, constants, paths
+│   ├── model_loader.py      # loads .pkl model + SHAP explainer
+│   ├── predictor.py         # prediction + SHAP logic
+│   ├── rag_pipeline.py      # embeddings, vector store, retrieval, Groq LLM, Local LLM fallback
+│   ├── chatbot.py           # unified chatbot logic (prediction + RAG)
+│   └── ui.py                # Gradio interface
+│
+├── app.py                   # main entry point
+│
+└── requirements.txt
+```
 # **Roadmap**
 
-## [**Phase 1**](heart_disease_dataset_exploration.ipynb):
+## [**Phase 1**](./dataset/heart_disease_dataset_exploration.ipynb):
 - Gathered a Cleveland UCI [heart disease dataset](https://www.kaggle.com/datasets/cherngs/heart-disease-cleveland-uci/code) for pre-processing and EDA.
 - Extracted relevant features from dataset and encoded categorical variables for future model training.
 
-## [**Phase 2**](heart_disease_dataset_model_training.ipynb):
+## [**Phase 2**](./dataset/heart_disease_dataset_model_training.ipynb):
 - Split the dataset into training and testing sets using the train_test_split function from scikit-learn.
 - Implemented a baseline model using logistic regression.
 - Trained the baseline model on the training set.
@@ -17,9 +43,17 @@ This project is decicated to MSAI-699 Capstone and aims to build an AI-powered h
 - Plotted the ROC curve to assess the model's ability to distinguish between positive and negative classes.
 - Observed the impact of applying SMOTE on the model's performance and made decision use in later phases to balance and improve evaluation metrics of model optimization.
 
-## [**Phase 3**](heart_disease_dataset_optimization.ipynb)
+## [**Phase 3**](./dataset/heart_disease_dataset_optimization.ipynb):
 - Model Evaluation: The performance of different models (Logistic Regression, Tuned Logistic Regression, Polynomial Logistic Regression, and Random Forest) was evaluated using various metrics such as accuracy, precision, recall, and F1 score. The models were compared and their performance was analyzed.
 - Model Optimization: The models were optimized by tuning hyperparameters using GridSearchCV and RandomizedSearchCV. The best models were selected based on the optimized hyperparameters.
 - SHAP Analysis: SHAP (Shapley Additive Explanations) analysis was performed to explain the predictions of the model (Random Forest). The SHAP values were visualized to understand the contribution of each feature to the model's predictions.
 - Model Selection: The best model was selected based on the performance metrics. In this case, the Logistic Regression model was determined to be the best model.
 - Model Saving: The best model was saved as a .pkl file using joblib.dump().
+
+## [**Phase 4**](.):
+**This phase focused on UI and explainability implemenation for heartbot-ai's purpose and functionality**
+- `heartbot.py`: This file defines the HeartBot class, which is responsible for handling chat-based queries. It imports necessary modules and uses them to generate answers to user queries.
+- `rag_pipeline.py`: This file defines the RAGPipeline class, which is responsible for the retrieval-augmented generation (RAG) pipeline. It loads documents, builds a FAISS index with SentenceTransformer embeddings, retrieves top-k chunks, and calls a language model (LLM) to generate answers. It also handles the use of Groq LLM if available, otherwise falls back to a local Qwen LLM.
+- `model_loader.py`: This file defines the load_model function, which loads the trained model for making predictions. It also defines the init_shap_explainer function, which initializes the SHAP explainer for model interpretation.
+- `predictor.py`: This file defines the PredictionService class, which is responsible for making predictions using the loaded model. It imports necessary modules and defines the predict method, which takes input data, loads the model, and returns the predicted output.
+- `ui.py`: This file contains the build_interface function, which builds the user interface for the application. It imports necessary modules and defines the UI components using the gradio library.

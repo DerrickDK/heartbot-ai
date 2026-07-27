@@ -1,0 +1,32 @@
+# Core ML
+scikit-learn
+numpy
+pandas
+joblib
+shap
+
+# UI
+gradio
+
+# RAG + Embeddings + Vector Store
+faiss-cpu
+sentence-transformers
+langchain
+langchain-core
+langchain-community
+langchain-groq
+
+# LLMs
+groq
+transformers
+torch
+
+# Document ingestion
+pypdf
+python-dotenv
+requests
+beautifulsoup4
+
+# Visualization
+matplotlib
+seaborn
