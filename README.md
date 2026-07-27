@@ -5,16 +5,15 @@ This project is decicated to MSAI-699 Capstone and aims to build an AI-powered h
 ```bash
 project/
 │
-├── models/
-│   └── heart_model.pkl      # Full pipeline model build
-│
 ├── data/
 │   └── docs/                # PDFs, dataset descriptions
+│
 ├── dataset/
-│   └── models/                # PDFs, dataset descriptions
-│       ├── ...exploration.ipynb
-│       ├── ...model_training.ipynb
-│       └── ...optimization.ipynb
+│   └── models/
+│    │  └── heart_model.pkl      # Full pipeline model build         
+│    ├── ...exploration.ipynb
+│    ├── ...model_training.ipynb
+│    └── ...optimization.ipynb
 │
 ├── src/
 │   ├── config.py            # API keys, constants, paths
