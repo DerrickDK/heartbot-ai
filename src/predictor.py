@@ -1,4 +1,3 @@
-# === src/predictor.py ===
 import pandas as pd
 from src.model_loader import load_model, init_shap_explainer
 from src.config import HEART_MODEL_PATH
