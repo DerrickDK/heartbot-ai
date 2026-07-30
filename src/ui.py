@@ -14,7 +14,7 @@ def build_interface() -> gr.Blocks:
 
     bot = HeartBot()
 
-    with gr.Blocks(title="HeartBot-AI") as demo:
+    with gr.Blocks(title="HeartBot-AI", theme=gr.themes.Soft()) as demo:
         gr.Markdown("# **HeartBot-AI**: A Heart Disease Prediction and Patient Support Chatbot")
 
         with gr.Tab("Risk Prediction"):
