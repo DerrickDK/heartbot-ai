@@ -229,7 +229,6 @@ class RAGPipeline:
             results.append((doc, float(dist)))
         return results
 
-    @spaces.GPU
     def _call_llm(self, prompt: str) -> str:
         """
         Unified LLM call: Groq if available, else local Qwen.
