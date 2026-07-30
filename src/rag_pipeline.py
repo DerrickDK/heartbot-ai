@@ -58,7 +58,7 @@ class RAGPipeline:
     
     def __init__(self):
         # Embeddings + text splitter
-        self.embedding_model = SentenceTransformer(EMBEDDING_MODEL_NAME)
+        self.embedding_model = SentenceTransformer(EMBEDDING_MODEL_NAME, device="cpu")
         self.text_splitter = RecursiveCharacterTextSplitter(
             chunk_size=CHUNK_SIZE,
             chunk_overlap=CHUNK_OVERLAP,
@@ -158,21 +158,18 @@ class RAGPipeline:
             d.metadata["type"] = "url"
         return loaded
 
-    @spaces.GPU
     def _embed_texts(self, texts: List[str]) -> np.ndarray:
         """
         Embed a list of texts using SentenceTransformer.
         """
         return self.embedding_model.encode(texts, convert_to_numpy=True)
 
-    @spaces.GPU
     def _embed_query(self, query: str) -> np.ndarray:
         """
         Embed a single query string.
         """
         return self.embedding_model.encode([query], convert_to_numpy=True)
 
-    @spaces.GPU
     def _build_faiss_index(self, embeddings: np.ndarray) -> faiss.IndexFlatL2:
         """
         Build a FAISS index from embeddings.
