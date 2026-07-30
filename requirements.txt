@@ -30,3 +30,7 @@ beautifulsoup4
 # Visualization
 matplotlib
 seaborn
+
+# Markdown
+unstructured
+markdown
