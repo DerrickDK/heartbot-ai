@@ -20,8 +20,6 @@ def init_shap_explainer(model):
     - Feeds it through the Pipeline
     """
 
-    shap.initjs()
-
     # Raw feature names used in the app / pipeline
     feature_names = FEATURE_NAMES
 

@@ -34,3 +34,5 @@ seaborn
 # Markdown
 unstructured
 markdown
+
+ipython
