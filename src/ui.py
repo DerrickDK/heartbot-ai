@@ -12,8 +12,15 @@ def build_interface() -> gr.Blocks:
     """
 
     bot = HeartBot()
+    
+    error_css = """
+    .invalid, :invalid, .error, .textfield.invalid, input:invalid {
+    border: 2px solid #ef4444 !important;
+    background-color: transparent !important;
+    }
+    """
 
-    with gr.Blocks(title="HeartBot-AI", theme=gr.themes.Soft()) as demo:
+    with gr.Blocks(title="HeartBot-AI", theme=gr.themes.Soft(), css=error_css) as demo:
         gr.Markdown("# **HeartBot-AI**: A Heart Disease Prediction and Patient Support Chatbot")
 
         with gr.Tab("Risk Prediction"):
@@ -24,7 +31,7 @@ def build_interface() -> gr.Blocks:
             with gr.Row():
                 inputs["age"] = gr.Number(
                     label="Age",
-                    info="Age in years",
+                    info="Age must be between 1 and 120",
                     minimum=1,
                     maximum=120
                 )
@@ -40,20 +47,20 @@ def build_interface() -> gr.Blocks:
                     label="Chest Pain Type (cp)",
                     choices=[0, 1, 2, 3],
                     value=0,
-                    info="0=Typical angina, 1=Atypical angina, 2=Non-anginal pain, 3=Asymptomatic"
+                    info="0 = Typical angina, 1 = Atypical angina, 2 = Non-anginal pain, 3 = Asymptomatic"
                 )
 
             with gr.Row():
                 inputs["trestbps"] = gr.Number(
                     label="Resting Blood Pressure (trestbps)",
-                    info="Resting blood pressure in mm Hg",
+                    info="Resting blood pressure must be between 50 and 250",
                     minimum=50,
                     maximum=250
                 )
 
                 inputs["chol"] = gr.Number(
                     label="Cholesterol (chol)",
-                    info="Serum cholesterol in mg/dl",
+                    info="Serum cholesterol must be between 100 and 600",
                     minimum=100,
                     maximum=600
                 )
@@ -75,7 +82,7 @@ def build_interface() -> gr.Blocks:
 
                 inputs["thalach"] = gr.Number(
                     label="Max Heart Rate Achieved (thalach)",
-                    info="Maximum heart rate achieved",
+                    info="Maximum heart rate achieved between 50 and 250",
                     minimum=50,
                     maximum=250
                 )
@@ -90,7 +97,7 @@ def build_interface() -> gr.Blocks:
             with gr.Row():
                 inputs["oldpeak"] = gr.Number(
                     label="ST Depression (oldpeak)",
-                    info="ST depression induced by exercise relative to rest",
+                    info="ST depression induced by exercise relative to rest between 0 and 10",
                     minimum=0.0,
                     maximum=10.0
                 )
