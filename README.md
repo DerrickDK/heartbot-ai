@@ -2,10 +2,18 @@
 This project is decicated to MSAI-699 Capstone and aims to build an AI-powered heart disease prediction and patient support chatbot using Gradio, Hugging Face, and Groq. The goal is to provide a user friendly interface for users to input their data, gain knowledge about their data, recieve predictions about the presense of heart disease, and interact with a chatbot, heartbot-ai, that offers patient support and guidance for wellness.
 
 # Table of Contents
-1. [Overview](#heart-disease-prediction-and-support-chatbot)
+1. [Screenshot](#screenshot)
 2. [File Structure](#structure)
-3. [Program Execution Flow](#execution-flow)
+3. [Program Execution Flow](#file-execution-flow)
 4. [Roadmap](#roadmap)
+
+
+# Screenshot
+### Prediction Interface
+![Prediction](./docs/Prediction.png)
+
+### Chat Interface
+![Chat](./docs/Chat.png)
 
 # Structure
 ```bash
@@ -138,3 +146,6 @@ project/
 - `model_loader.py`: This file defines the load_model function, which loads the trained model for making predictions. It also defines the init_shap_explainer function, which initializes the SHAP explainer for model interpretation.
 - `predictor.py`: This file defines the PredictionService class, which is responsible for making predictions using the loaded model. It imports necessary modules and defines the predict method, which takes input data, loads the model, and returns the predicted output.
 - `ui.py`: This file contains the build_interface function, which builds the user interface for the application. It imports necessary modules and defines the UI components using the gradio library.
+
+## [**Phase 5**](./dataset/heart_disease_dataset_model_training.ipynb)
+- Updated code logic to include cross-validation via f1 and accuracy of baseline logistic regression model.
