@@ -126,9 +126,15 @@ def build_interface() -> gr.Blocks:
 
 
             predict_button = gr.Button("Predict Risk")
+            clear_btn = gr.Button("Clear")
             pred_output_label = gr.Textbox(label="Prediction", interactive=False)
             pred_output_proba = gr.Textbox(label="Probability", interactive=False)
-            shap_output = gr.JSON(label="SHAP Feature Contributions")
+            shap_output = gr.DataFrame(label="SHAP Feature Level Explanation", interactive=False)
+            clear_btn.click(
+                fn=lambda: ("", "", ""),
+                inputs=[], 
+                outputs=[pred_output_label, pred_output_proba, shap_output]
+                )
 
             def on_predict(*vals):
                 features: Dict[str, Any] = {
@@ -140,8 +146,8 @@ def build_interface() -> gr.Blocks:
                     return result["message"], "", {}
                 return (
                     result["label"],
-                    f"{result['probability']:.4f}",
-                    result["shap_values"],
+                    f"{result['probability']* 100:.2f}%",
+                    result["shap_table"],
                 )
 
             predict_button.click(

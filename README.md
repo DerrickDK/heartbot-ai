@@ -147,5 +147,5 @@ project/
 - `predictor.py`: This file defines the PredictionService class, which is responsible for making predictions using the loaded model. It imports necessary modules and defines the predict method, which takes input data, loads the model, and returns the predicted output.
 - `ui.py`: This file contains the build_interface function, which builds the user interface for the application. It imports necessary modules and defines the UI components using the gradio library.
 
-## [**Phase 5**](./dataset/heart_disease_dataset_model_training.ipynb)
+## [**Phase 5**](./dataset/heart_disease_dataset_model_training.ipynb):
 - Updated code logic to include cross-validation via f1 and accuracy of baseline logistic regression model.

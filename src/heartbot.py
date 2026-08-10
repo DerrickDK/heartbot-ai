@@ -29,7 +29,7 @@ class HeartBot:
             "type": "prediction",
             "label": pred_label,
             "probability": result["probability"],
-            "shap_values": result["shap_values"],
+            "shap_table": result["shap_table"],
         }
 
     def handle_rag_query(self, query: str) -> Dict[str, Any]:
