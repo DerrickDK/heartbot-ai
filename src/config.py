@@ -20,7 +20,7 @@ FAISS_INDEX_PATH = DATA_DIR/"faiss_index.bin"
 
 # Groq / LLM
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
-GROQ_MODEL_NAME = "llama-3.1-8b-instant"
+GROQ_MODEL_NAME = "openai/gpt-oss-20b"
 
 # Local LLM
 LOCAL_LLM_MODEL_NAME = "Qwen/Qwen2.5-0.5B-Instruct"
