@@ -15,6 +15,8 @@ This project is decicated to MSAI-699 Capstone and aims to build an AI-powered h
 ### Chat Interface
 ![Chat](./docs/Chat.png)
 
+A prototype link to the app for live interaction can be found here: **[LIVE](http://derrickdk777-heartbot-ai.hf.space/)**
+
 # Structure
 ```bash
 project/
