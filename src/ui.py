@@ -5,7 +5,6 @@ import gradio as gr
 from src.config import FEATURE_NAMES
 from src.heartbot import HeartBot
 
-
 def build_interface() -> gr.Blocks:
     """
     Build for the Gradio UI.
@@ -20,7 +19,7 @@ def build_interface() -> gr.Blocks:
     }
     """
 
-    with gr.Blocks(title="HeartBot-AI", theme=gr.themes.Soft(), css=error_css) as demo:
+    with gr.Blocks(title="HeartBot-AI") as demo:
         gr.Markdown("# **HeartBot-AI**: A Heart Disease Prediction and Patient Support Chatbot")
 
         with gr.Tab("Risk Prediction"):

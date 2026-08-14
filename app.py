@@ -1,14 +1,10 @@
-from src.ui import build_interface
+from src.ui import build_interface, gr, error_css
 
 
-def main():
+if __name__ == "__main__":
     """
     Main entry point to launch the Gradio app.
     """
     demo = build_interface()
-    demo.launch()
-
-
-if __name__ == "__main__":
-    main()
+    demo.launch(theme=gr.themes.Soft(), css=error_css)
 

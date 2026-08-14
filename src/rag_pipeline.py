@@ -87,7 +87,7 @@ class RAGPipeline:
         self._load_and_index_documents()
 
     # Keep ZeroGPU happy by triggering the GPU layer while letting the main loop run on CPU.
-    @spaces.GPU(duration=1)
+    @spaces.GPU
     def dummy_gpu_startup_trigger():
         """ This function triggers initially the GPU layer the Hugging Face startup scanner. """
         return "ZeroGPU Layer Initialized Successfully"
