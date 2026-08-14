@@ -5,19 +5,18 @@ import gradio as gr
 from src.config import FEATURE_NAMES
 from src.heartbot import HeartBot
 
+ERROR_CSS = """
+    .invalid, :invalid, .error, .textfield.invalid, input:invalid {
+    border: 2px solid #ef4444 !important;
+    background-color: transparent !important;
+    }
+    """
 def build_interface() -> gr.Blocks:
     """
     Build for the Gradio UI.
     """
 
     bot = HeartBot()
-    
-    error_css = """
-    .invalid, :invalid, .error, .textfield.invalid, input:invalid {
-    border: 2px solid #ef4444 !important;
-    background-color: transparent !important;
-    }
-    """
 
     with gr.Blocks(title="HeartBot-AI") as demo:
         gr.Markdown("# **HeartBot-AI**: A Heart Disease Prediction and Patient Support Chatbot")
