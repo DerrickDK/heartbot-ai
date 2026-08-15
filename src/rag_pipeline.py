@@ -6,9 +6,15 @@ if HF_DEPLOYMENT:
     import spaces
 else:
     class FakeSpaces:
-        def GPU(self, fn):
-            # No‑op decorator for local testing
-            return fn
+        def GPU(self, *args, **kwargs):
+            # Python passes the function directly as the first positional argument
+            if len(args) == 1 and callable(args[0]):
+                return args[0]
+            
+            # Python evaluates the arguments first and expects a decorator function back
+            def decorator(fn):
+                return fn
+            return decorator
     spaces = FakeSpaces()
 
 from typing import List, Tuple, Dict, Any, Union
@@ -87,7 +93,7 @@ class RAGPipeline:
         self._load_and_index_documents()
 
     # Keep ZeroGPU happy by triggering the GPU layer while letting the main loop run on CPU.
-    @spaces.GPU
+    @spaces.GPU(decorator=60)
     def dummy_gpu_startup_trigger():
         """ This function triggers initially the GPU layer the Hugging Face startup scanner. """
         return "ZeroGPU Layer Initialized Successfully"
