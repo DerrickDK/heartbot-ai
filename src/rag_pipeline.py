@@ -91,13 +91,7 @@ class RAGPipeline:
 
         # Build index once at startup
         self._load_and_index_documents()
-
-    # Keep ZeroGPU happy by triggering the GPU layer while letting the main loop run on CPU.
-    @spaces.GPU(decorator=60)
-    def dummy_gpu_startup_trigger():
-        """ This function triggers initially the GPU layer the Hugging Face startup scanner. """
-        return "ZeroGPU Layer Initialized Successfully"
-
+    
     def _load_local_llm(self) -> Tuple[AutoModelForCausalLM, AutoTokenizer]:
         """
         Load local fallback LLM (Qwen2.5-0.5B-Instruct) from Hugging Face.
@@ -295,3 +289,9 @@ class RAGPipeline:
             "answer": answer,
             "sources": list(dict.fromkeys(sources)),  # dedupe while preserving order
         }
+# Keep ZeroGPU happy by triggering the GPU layer while letting the main loop run on CPU.
+@spaces.GPU
+def dummy_gpu_startup_trigger():
+    """ This function triggers initially the GPU layer the Hugging Face startup scanner. """
+    return "ZeroGPU Layer Initialized Successfully"
+
