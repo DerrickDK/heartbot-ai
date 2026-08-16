@@ -6,7 +6,7 @@ from src.config import FEATURE_NAMES
 from src.heartbot import HeartBot
 
 ERROR_CSS = """
-    .invalid, :invalid, .error, .textfield.invalid, input:invalid {
+    .invalid, :invalid, .textfield.invalid, input:invalid {
     border: 2px solid #ef4444 !important;
     background-color: transparent !important;
     }
